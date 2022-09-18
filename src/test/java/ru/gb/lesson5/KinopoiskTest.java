@@ -29,9 +29,27 @@ public class KinopoiskTest {
         driver.manage().window(). maximize() ;
         driver.get("https://hd.kinopoisk.ru/");
     }
+    //"Переход в раздел сериалы" с главной странице кинопоиска
+    //1. Навести кнопку мыши на раздел кинопоиск
+    //2. Выбрать сериалы и перейти на страницу
+    //3. Убедиться, что верно перешли на раздел сериалы, сравнив url
+    @Test
+    void goToSerialTest() throws InterruptedException {
+        Thread.sleep(25000);
+        actions.moveToElement(driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationMenu_root')]")))
+                .perform();
+        //Thread.sleep(5000);
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'HeaderNavigationMenu_dropdown-menu')]//a[.='Сериалы']")));
+        driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationMenu_dropdown-menu')]//a[.='Сериалы']")).click();
+        Assertions.assertTrue(driver.getCurrentUrl().contains("/movies/3/"));
+    }
+    //"Авторизация на сайте кинопоиска"
+    // 1. Нажать на кнопку войти
+    // 2. Ввести логин
+    // 3. Ввести пароль
+    // 4. проверить успешность авторизации по появлению раздела "Мое"
     @Test
     void authTest() throws InterruptedException {
-        driver.get("https://hd.kinopoisk.ru/");
         Thread.sleep(15000); //ожидание для прохождения капчи, в случае ее возникновения
         driver.findElement(By.xpath("//a[.='Войти']")).click();
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("passp-field-login")));
@@ -45,8 +63,8 @@ public class KinopoiskTest {
         Assertions.assertTrue(driver.findElement(By.xpath("//a[.='Моё']")).isDisplayed());
     }
 
-    @AfterAll
-    static void tearDown() {
+    @AfterEach
+    void tearDown() {
         driver.quit();
     }
 
