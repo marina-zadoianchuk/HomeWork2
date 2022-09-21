@@ -35,7 +35,7 @@ public class KinopoiskTest {
     //3. Убедиться, что верно перешли на раздел сериалы, сравнив url
     @Test
     void goToSerialTest() throws InterruptedException {
-        Thread.sleep(25000);
+        Thread.sleep(15000); //ожидание для прохождения капчи, в случае ее возникновения
         actions.moveToElement(driver.findElement(By.xpath("//div[contains(@class, 'HeaderNavigationMenu_root')]")))
                 .perform();
         //Thread.sleep(5000);
