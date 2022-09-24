@@ -16,6 +16,7 @@ public class MainPage extends BaseView{
     }
     @FindBy(xpath = "//button[@aria-label='Навигация по сайту']")
     private WebElement navigatonButton;
+   // @Step("Нажатие на кнопку навигации")
     public MainPage clickNavigationButton(){
         navigatonButton.click();
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(forWomanXpath))));

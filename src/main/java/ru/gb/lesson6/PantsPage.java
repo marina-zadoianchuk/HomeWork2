@@ -13,12 +13,12 @@ public class PantsPage extends BaseView {
     private static final String pantsCategoryUrl = "11";
     public PantsPage(WebDriver driver) {
         super(driver);
-      //  this.categoryList = categoryList;
+        //  this.categoryList = categoryList;
     }
     private static final String categoryListXpath = "//fieldset[@class='j-list filter__fieldset list_left_xsubject render_type_1 filter__fieldset--limited']/label";
     @FindBy(xpath = categoryListXpath)
     private List<WebElement> categoryList;
-
+   // @Step("Выбор категории брюки из списка чекбоксов категорий")
     public PantsPage selectCategory(String category) throws InterruptedException {
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(categoryListXpath))));
         categoryList.stream().filter(d -> d.getText().contains(category)).findFirst().get().click();
@@ -26,5 +26,4 @@ public class PantsPage extends BaseView {
         Assertions.assertTrue(driver.getCurrentUrl().contains(pantsCategoryUrl));
         return new PantsPage(driver);
     }
-
 }

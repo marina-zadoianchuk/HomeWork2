@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ru.gb.lesson5.KinopoiskTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 121.692 s - in ru.gb.lesson5.KinopoiskTest

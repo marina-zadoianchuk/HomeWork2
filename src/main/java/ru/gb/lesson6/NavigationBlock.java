@@ -17,14 +17,14 @@ public class NavigationBlock extends BaseView{
     private static final String pantsForWomenXpath = "//div[contains(@class,'item--active')]//ul[contains(@class, 'menu-burger__set')]//a[.='Брюки']";
     @FindBy(xpath = pantsForWomenXpath)
     private WebElement pantsForWomen;
-
+  //  @Step("Наведение на категорию женщинам и клик на категорию брюки")
     public PantsPage GoToPantsForWomanPage(){
-                webDriverWait.until(ExpectedConditions.visibilityOf(forWoman));
-                actions.moveToElement(forWoman)
-                        .perform();
-     //   webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(forWomanXpath))));
-                webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(pantsForWomenXpath))));
-                pantsForWomen.click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(forWoman));
+        actions.moveToElement(forWoman)
+                .perform();
+        //   webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(forWomanXpath))));
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(pantsForWomenXpath))));
+        pantsForWomen.click();
 
         return new PantsPage(driver);
     }
